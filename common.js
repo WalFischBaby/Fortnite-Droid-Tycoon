@@ -111,6 +111,33 @@ function renderTracker(kind,items,variants){
   render();
 }
 
+function renderIcons(items){
+  const body=document.getElementById('iconBody'), state=stateLoad('icons');
+  function render(){
+    body.innerHTML=items.map((it,idx)=>{
+      const key=it.name+'#'+idx, checked=!!state[key];
+      return `<tr class="${checked?'row-complete':''}">
+        <td class="sticky droidcell"><div class="name">${esc(it.name)}</div><div class="badges">${badge(it.type,getTypeColor(it.type),'type-box')}</div></td>
+        <td class="check-cell"><input aria-label="${esc(it.name)} vorhanden" class="check" style="--vcolor:#11e8ff" type="checkbox" data-key="${esc(key)}" ${checked?'checked':''}><span class="check-label">VORHANDEN</span></td>
+      </tr>`;
+    }).join('');
+    body.querySelectorAll('.check').forEach(cb=>cb.addEventListener('change',()=>{
+      state[cb.dataset.key]=cb.checked; stateSave('icons',state); update(); render();
+    }));
+    update();
+  }
+  function update(){
+    const done=items.filter((it,idx)=>state[it.name+'#'+idx]).length, total=items.length, pct=total?Math.round(done/total*100):0;
+    document.getElementById('done').textContent=`${done}/${total}`;
+    document.getElementById('pct').textContent=pct+'%';
+    document.getElementById('bar').style.width=pct+'%';
+  }
+  document.getElementById('reset').addEventListener('click',()=>{
+    if(confirm('Wirklich den gesamten Ikonen-Fortschritt löschen?')){localStorage.removeItem(STORE+'-icons');location.reload()}
+  });
+  render();
+}
+
 function renderRecipes(recipes){
   const el=document.getElementById('recipes');
   el.innerHTML=recipes.map(r=>`<article class="recipe ${slug(r.rarity)}" style="--rc:${getRarityColor(r.rarity)}">
