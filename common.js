@@ -33,6 +33,39 @@ function getRarityColor(r){return RARITY_COLORS[String(r||'').toUpperCase()]||'#
 function getTypeColor(t){return TYPE_COLORS[t]||'#60758f'}
 function getVariantColor(v){return VARIANT_COLORS[v]||'#60758f'}
 
+
+function getTrackerProgress(key,items,variants){
+  const state=stateLoad(key); let done=0;
+  items.forEach((it,idx)=>variants.forEach(v=>{if(state[it.name+'#'+idx+'|'+v])done++;}));
+  const total=items.length*variants.length, pct=total?Math.round(done/total*100):0;
+  return {done,total,pct};
+}
+
+function getIconProgress(items){
+  const state=stateLoad('icons');
+  const done=items.filter((it,idx)=>state[it.name+'#'+idx]).length, total=items.length, pct=total?Math.round(done/total*100):0;
+  return {done,total,pct};
+}
+
+function getRebirthProgress(){
+  const state=stateLoad('rebirth'), total=35, done=Object.values(state).filter(Boolean).length, pct=Math.round(done/total*100);
+  return {done,total,pct};
+}
+
+function setHomeProgress(prefix,p){
+  const done=document.getElementById(prefix+'Done'), pct=document.getElementById(prefix+'Pct'), bar=document.getElementById(prefix+'Bar');
+  if(done) done.textContent=`${p.done}/${p.total} ${prefix==='homeIkonen'?'Ikonen':prefix==='homeRebirth'?'Rebirths':'Varianten'}`;
+  if(pct) pct.textContent=p.pct+'%';
+  if(bar) bar.style.width=p.pct+'%';
+}
+
+function renderHomeProgress(){
+  if(!document.getElementById('homeDroidsPct')) return;
+  setHomeProgress('homeDroids',getTrackerProgress('droids',D.droids,D.variants));
+  setHomeProgress('homeFusionen',getTrackerProgress('fusionen',D.fusionDroids,D.variants));
+  setHomeProgress('homeIkonen',getIconProgress(D.icons));
+}
+
 function renderTracker(kind,items,variants){
   const body=document.getElementById('trackerBody'), state=stateLoad(kind);
   const search=document.getElementById('search'), type=document.getElementById('type'), rarity=document.getElementById('rarity');
