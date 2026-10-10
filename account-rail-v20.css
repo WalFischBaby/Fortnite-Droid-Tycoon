@@ -1,0 +1,22 @@
+/* DT-01 V2.0: dedicated right utility column without content overlap. */
+body.terminal-v3 .dt-dashboard-widgets{box-sizing:border-box;min-width:0}
+body.terminal-v3 .dt-account-avatar{overflow:hidden;flex:0 0 48px;width:48px;height:48px;border-radius:12px}
+body.terminal-v3 .dt-account-avatar img{display:block;width:100%;height:100%;object-fit:cover}
+body.terminal-v3 .dt-account-identity strong{font-size:14px;line-height:1.35;overflow-wrap:anywhere;white-space:normal}
+@media(min-width:1550px){
+  body.terminal-v3{--dt-right-column:312px;--dt-left-column:190px}
+  body.terminal-v3 main.wrap{box-sizing:border-box!important;width:calc(100vw - var(--dt-left-column) - var(--dt-right-column) - 28px)!important;max-width:none!important;margin-left:calc(var(--dt-left-column) + 14px)!important;margin-right:0!important;min-width:0!important}
+  body.terminal-v3 header{margin-right:var(--dt-right-column)!important}
+  body.terminal-v3 main.wrap .dt-dashboard-widgets{position:fixed!important;top:18px!important;right:14px!important;bottom:18px!important;left:auto!important;width:284px!important;max-width:284px!important;min-width:0!important;display:flex!important;flex-direction:column!important;gap:15px!important;margin:0!important;padding:0 3px 6px!important;z-index:35!important;overflow-y:auto!important;overflow-x:hidden!important;scrollbar-width:thin;align-items:stretch!important;box-sizing:border-box!important}
+  body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-account-card,
+  body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-chat-card{position:relative!important;inset:auto!important;transform:none!important;display:grid!important;flex:none!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;z-index:auto!important;box-sizing:border-box!important}
+  body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-chat-card{display:block!important;overflow:visible!important}
+  body.terminal-v3 main.wrap .dt-dashboard-widgets .dt-chat-messages{height:clamp(150px,24vh,280px)!important;overflow-y:auto!important}
+}
+@media(max-width:1549px){
+  body.terminal-v3 main.wrap .dt-dashboard-widgets{position:static!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;margin:0 0 22px!important;width:100%!important;max-width:100%!important;min-width:0!important}
+  body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-account-card,
+  body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-chat-card{position:static!important;inset:auto!important;width:100%!important;max-width:none!important;min-width:0!important;box-sizing:border-box!important;margin:0!important}
+  body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-chat-card{overflow:visible!important}
+}
+@media(max-width:850px){body.terminal-v3 main.wrap .dt-dashboard-widgets{grid-template-columns:minmax(0,1fr)!important}}

@@ -1,0 +1,9 @@
+/* DT-01: account and community chat in normal page layout, never overlay collection/profile. */
+body.terminal-v3 main.wrap .dt-dashboard-widgets{display:grid;grid-template-columns:minmax(260px,1fr) minmax(320px,1.35fr);align-items:start;gap:16px;margin:0 0 22px;width:100%;max-width:100%;min-width:0}
+body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-account-card,
+body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-chat-card{position:static!important;inset:auto!important;top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;transform:none!important;width:100%!important;min-width:0!important;max-width:none!important;margin:0!important;z-index:auto!important;float:none!important;box-sizing:border-box!important}
+body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-account-card{display:grid!important;grid-template-columns:1fr!important;gap:12px!important;min-height:0!important}
+body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-account-card > *{grid-column:1/-1!important}
+body.terminal-v3 main.wrap .dt-dashboard-widgets > .dt-chat-card{max-height:none!important;overflow:visible!important}
+body.terminal-v3 main.wrap .dt-dashboard-widgets .dt-chat-messages{height:160px;overflow-y:auto}
+@media(max-width:780px){body.terminal-v3 main.wrap .dt-dashboard-widgets{grid-template-columns:minmax(0,1fr)!important}}

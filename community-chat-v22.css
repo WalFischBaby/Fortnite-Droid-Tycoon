@@ -1,0 +1,30 @@
+
+/* DT-01 V2.2 Community Chat */
+.dt-chat-card{position:fixed;right:18px;top:315px;z-index:65;width:240px;box-sizing:border-box;border:1px solid rgba(104,226,255,.3);border-radius:17px;background:linear-gradient(150deg,#0c182f,#080d1d);color:#e9f8ff;padding:14px;box-shadow:0 15px 40px #0006;font-family:system-ui,sans-serif}
+.dt-chat-heading{display:flex;justify-content:space-between;gap:5px;align-items:center;font:900 11px ui-monospace,monospace;letter-spacing:.05em;color:#79e9ff}.dt-chat-live{color:#69e2af;font-size:9px}.dt-chat-description{font-size:11px;color:#a9c0d8;margin:8px 0}.dt-chat-messages{height:245px;overflow-y:auto;overscroll-behavior:contain;display:grid;align-content:start;gap:10px;padding:8px 2px;border-top:1px solid #2b4260;border-bottom:1px solid #2b4260}.dt-chat-msg{display:flex;align-items:start;gap:7px}.dt-chat-avatar{background:#152a47;border-radius:8px;min-width:26px;height:26px;display:grid;place-items:center;font-size:15px}.dt-chat-msg-content{min-width:0;flex:1}.dt-chat-msg-head{display:flex;justify-content:space-between;gap:5px;align-items:center}.dt-chat-msg-head strong{font-size:10px;overflow-wrap:anywhere}.dt-chat-msg-head time{font-size:9px;color:#8ba7bf}.dt-chat-msg p{font-size:11px;line-height:1.45;overflow-wrap:anywhere;white-space:pre-wrap;margin:3px 0}.dt-chat-report{background:transparent;border:0;padding:0;color:#a5b9cc;font-size:9px;text-decoration:underline;cursor:pointer}.dt-chat-notice{font-size:10px;color:#9cb6ce;min-height:1.2em;margin:8px 0}.dt-chat-card form{display:grid;gap:7px}.dt-chat-card form[hidden],.dt-chat-card button[hidden]{display:none}.dt-chat-card textarea{width:100%;box-sizing:border-box;resize:vertical;background:#0c1b32;border:1px solid #335b77;color:#fff;border-radius:9px;padding:9px;font:12px system-ui;min-height:52px}.dt-chat-card form button,.dt-chat-login{background:#0e3045;border:1px solid #4b9aba;border-radius:9px;color:#f1fbff;padding:10px;font-size:11px;font-weight:800;cursor:pointer;width:100%}.dt-chat-card form button:disabled{opacity:.5}.dt-chat-rules{display:block;color:#859cb3;font-size:9px;line-height:1.4;margin-top:9px}.dt-chat-sr{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}
+@media(min-width:1400px){.dt-chat-card{width:260px;right:24px}}
+@media(max-width:1350px){.dt-chat-card{position:relative;inset:auto;width:min(100% - 36px,620px);margin:10px auto 20px;z-index:1}.dt-chat-messages{height:230px}}
+@media(max-width:850px){main.wrap>.dt-chat-card{position:relative!important;inset:auto!important;width:100%!important;margin:0 0 18px!important;z-index:1!important}.dt-chat-messages{height:230px}}
+
+.dt-chat-accept,.dt-chat-staff{border:1px solid #35526d;border-radius:10px;padding:10px;margin-top:10px;background:#0a172b;color:#d9f4ff;font-size:11px}.dt-chat-accept[hidden],.dt-chat-staff[hidden]{display:none!important}.dt-chat-accept button,.dt-chat-staff button{background:#10364c;border:1px solid #4b9aba;color:white;border-radius:7px;padding:8px;cursor:pointer;font-size:10px;margin:3px}.dt-chat-staff summary{cursor:pointer;font-weight:800}.dt-chat-staff input{max-width:100%;box-sizing:border-box;background:#0a1a2e;color:white;border:1px solid #3e607a;padding:8px;border-radius:7px}.dt-chat-report-item{border-bottom:1px solid #294057;padding:7px 0}.dt-chat-report-item p{overflow-wrap:anywhere}.dt-chat-staff-actions{display:flex;flex-wrap:wrap}
+
+/* V2.2: Moderation bleibt im sichtbaren Bereich und ist separat scrollbar. */
+@media (min-width:1351px){
+ .dt-chat-card{max-height:calc(100dvh - 330px);min-height:180px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#477b9a #0b1528;}
+ .dt-chat-messages{height:clamp(110px,24dvh,245px);}
+ .dt-chat-staff[open]{max-height:min(42dvh,430px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;}
+}
+@media (max-width:1350px){
+ .dt-chat-card{max-height:none;overflow:visible;}
+ .dt-chat-staff[open]{max-height:min(55dvh,520px);overflow-y:auto;overscroll-behavior:contain;}
+}
+@media (max-width:850px){
+ .dt-chat-card{margin-bottom:28px!important;}
+ .dt-chat-staff[open]{max-height:min(55dvh,520px);overflow-y:auto;}
+}
+.dt-chat-staff summary{position:sticky;top:0;background:#0a172b;padding:8px 0;z-index:1;}
+.dt-chat-staff button{min-height:34px;}
+
+/* DT-01 V2.0: gespeichertes Spielerprofilbild im Chat */
+.dt-chat-avatar{width:34px;height:34px;min-width:34px;overflow:hidden;border:1px solid rgba(111,231,255,.25);border-radius:10px;box-sizing:border-box}
+.dt-chat-avatar-img{display:block;width:100%;height:100%;object-fit:contain}
