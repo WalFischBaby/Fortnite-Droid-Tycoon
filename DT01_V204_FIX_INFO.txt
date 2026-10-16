@@ -1,0 +1,4 @@
+DT-01 V2.0.4 – ECG-Seltenheit korrigiert
+ECG ist jetzt als MYTISCH gespeichert und erscheint bei den anderen mytischen Astromechs.
+Die Sortierreihenfolge verwendet ebenfalls MYTISCH.
+Alle bestehenden Original-Indizes der Droiden bleiben unverändert; Cloud-Schlüssel nicht verändert.

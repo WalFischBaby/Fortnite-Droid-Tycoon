@@ -152,7 +152,7 @@ async function load(){
   if(!user)return;
   $('directoryStatus').textContent='Mitglieder werden geladen …';
   const {data,error}=await client.from('dt01_member_profiles').select('user_id,username,avatar,bio,fortnite_name,discord_name,twitch_name,tiktok_name,rank_name,rank_percent,achievement_ids');
-  if(error){$('directoryStatus').textContent='Mitgliederverzeichnis derzeit nicht verfügbar.';return}
+  if(error){$('directoryStatus').textContent='Verzeichnis nicht verfügbar. Bitte Community-SQL und Berechtigungen prüfen.';return}
   let roles=[];const ids=(data||[]).map(x=>x.user_id);
   if(ids.length){const result=await client.from('dt01_member_roles').select('user_id,role').in('user_id',ids);if(!result.error)roles=result.data||[]}
   const rm=new Map(roles.map(x=>[x.user_id,x.role]));
